@@ -4,7 +4,7 @@ Donate link: http://www.vcita.com?invite=WP-V-PNT&o=WP-V-PNT
 Tags: PayPal payment, PayPal, button, payment, online payments, pay now, paypal plugin for wordpress, button, paypal button, payment form, pay online, paypal buy now, ecommerce, paypal plugin, shortcode, online, payments, payments for wordpress, paypal for wordpress, paypal donation, paypal transfer, payment processing, paypal widget, wp paypal, purchase button, money, invoice, invoicing, payment collect, secure, process credit cards, paypal integration, gateway, stripe, authorize
 Requires at least: 2.8
 Tested up to: 4.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -156,11 +156,23 @@ Please visit <a href="http://www.vcita.com/about/privacy_policy?invite=WP">Priva
 4. **Capture more leads with vCita LiveSite** - LiveSite Widget will double the number of new business opportunities your website generate
 
 
-== Changelog == 
-
+== Changelog ==
+ = PayPal Button and Online Payment by vCita Version 1.2.0 =
+ * New design for email notifications sent from vCita to you & your clients
+ * More customization for the emails including branding colors and logo
+ * New! Email signature option was added
+ * Enhencements with scheduling settings to prevent appointments from being scheduled to far in advance
+ 
  = PayPal Button and Online Payment by vCita Version 1.1.0 =
  * Compatibility with WordPress 4.1
  * Added translations to: Spanish, Polish, French and Hebrew.
  
  = PayPal Button and Online Payment by vCita Version 1.0.0 =
  * First release
+
+== Upgrade Notice ==
+
+ = PayPal Button and Online Payment by vCita Version 1.2.0 =
+
+New design for the email notifications sent from vCita to you & your clients
+

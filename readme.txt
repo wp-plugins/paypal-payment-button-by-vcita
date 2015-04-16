@@ -1,38 +1,38 @@
-﻿=== Online Payments with PayPal and Stripe - By vCita ===
+﻿=== WP PayPal and Stripe Online Payments By vCita ===
 Contributors: vCita
 Donate link: http://www.vcita.com?invite=WP-V-PNT&o=WP-V-PNT
-Tags: PayPal payment, PayPal, button, payment, online payments, Stripe, Super Stripe, Stripe checkout, pay now, paypal plugin for wordpress, button, paypal button, payment form, pay online, paypal buy now, ecommerce, paypal plugin, shortcode, online, payments, payments for wordpress, paypal for wordpress, paypal donation, paypal transfer, payment processing, paypal widget, wp paypal, purchase button, money, invoice, invoicing, payment collect, secure, process credit cards, paypal integration, gateway, stripe, authorize
+Tags: PayPal payment, PayPal, button, payment, online payments, Stripe, Super Stripe, Stripe checkout, pay now, paypal payment form, Stripe  payment form, paypal plugin for wordpress, payment accept, button, paypal button, payment form, pay online, paypal buy now, ecommerce, paypal plugin, shortcode, online, payments, payments for wordpress, paypal for wordpress, paypal donation, paypal transfer, payment processing, paypal widget, wp paypal, purchase button, money, invoice, invoicing, payment collect, secure, process credit cards, paypal integration, gateway, stripe, authorize
 Requires at least: 2.8
 Tested up to: 4.1
 Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
-Get paid faster! Add an online payment button or form to any web page and let clients pay online for your services and products using Stripe or PayPal
+Easy to use WordPress plugin to accept payment with PayPal or Stripe for any service or product in one click
 == Description ==
 
-PayPal Payments plugin by vCita is great for accepting credit card and PayPal payments on your WordPress site using PayPal Or Stripe.
+WP PayPal and Stripe Online Payments plugin by vCita is great for accepting credit card and PayPal payments on your WordPress site using PayPal Or Stripe.
+<BR><BR> 
+You can integrate online payments into your site as a **payment button** or a **payment form** in seconds - no coding required.
+<BR>
+Both the button and the form provide a professional, mobile friendly **online payment solution** that is easy to us.
 
-<BR> 
-You can integrate online payments into your site as a **button** or a **lead capturing** form in seconds - no coding required.
-Both the button and the form provide a professional, mobile friendly **online payment solution** that is easy to us and **directly deposits funds into your bank or PayPal account**.
-
-You can **customize the form** and request additional information regarding the client or the payment.<BR>
-Funds are directly deposited in your account and with no additional transaction fees.
+You can **customize the form** and request additional information regarding the client or the payment.
+**Funds are directly deposited** in your account and with no additional transaction fees.
 <BR>
 
 = Online Payments Plugin Key Features: =
 
-1. Create your online payment button in seconds and simply add it to any web page using shortcode.
-2. Let clients  pay any amount, for any service or product, using Credit card or PayPal.
-3. Collect payments in any currency supported by PayPal or Stripe - <a href ="https://support.vcita.com/entries/23085386-What-currencies-can-be-used-with-vCita-">See full list</a> .
-4. Returning clients are automatically recognized and the payment process is further streamlined
-5. Have your funds deposited straight to your bank account – powered by Stripe.
-6. Receive immediate notification once a payment is made.
-7. Manage all payments and customers in one convenient dashboard.
-8. Integrated invoicing solution
+*	Create online payment buttons in seconds and add them to any web page using shortcode.
+*	Easily customize the payment form to collect all needed information.
+*	Accept Credit Card and PayPal payments for any service or product.
+*	Accept payments in any currency supported by PayPal or Stripe - <a href ="https://support.vcita.com/entries/23085386-What-currencies-can-be-used-with-vCita-">See full list</a> .
+*	Have your funds deposited straight to your bank account – powered by Stripe.
+*	Receive immediate notification once a payment via PayPal or Stripe is made.
+*	Manage all PayPal and Stripe payments and customers in one convenient dashboard.
+*	Integrated invoicing solution
 
-PayPal Payment plugin is part of vCita **LiveSite**. <BR>
+WP PayPal and Stripe Online Payments plugin is part of vCita **LiveSite**. <BR>
 LiveSite optimizes your WordPress website and helps you capture more leads while delivering better service to your clients. LiveSite modules include contact management, online scheduling, document sharing and more.
 
 https://www.youtube.com/watch?v=x7CviSgr1mE
@@ -41,9 +41,10 @@ The plugin connects to your vCita account as well as your PayPal or Stripe accou
 
 = More features available with Online Payments by vCita: =
 
-* Add PayPal payment button to any page or post
+* Add PayPal or Stripe payment button to any page or post
 * Mobile ready online payment processing that looks great on any device
 * Friendly online payment experience for your clients
+* Automatically recognize and greet returning clients, and alert them of outstanding payments
 * Convenient credit card payment processing or PayPal payments for your web or mobile site
 * Use an <a href ="https://www.vcita.com/invoice_template">invoice template</a> and generate invoices for your clients to pay online using credit card or PayPal
 * Keep complete payments history
@@ -52,13 +53,14 @@ The plugin connects to your vCita account as well as your PayPal or Stripe accou
 * Simply integrate PayPal with your site using shortcode
 * Receive payments to any PayPal account
 * Set the payment currency
-* Offer a secured payment option through your WordPress site
-* Predefine PayPal payment amount or let clients set it
-* Predefine PayPal Payment title or let clients set it
+* Accept paymentthrough your WordPress site in a secured way 
+* Predefine PayPal ans Stripe payment amount or let clients set it
+* Predefine PayPal ans Stripe  title or let clients set it
 
 = Translations =
-The following language translations are already available in the plugin:
+WP PayPal and Stripe Online Payments By vCita is currently available in:
 
+* English
 * Spanish
 * Hebrew
 * Polish
@@ -73,9 +75,9 @@ Join the vCita <a href ="http://www.vcita.com/partners/web-professionals?o=WP-v-
 
 == Installation ==
  
-= Install vCita PayPal Payments for WordPress =
+= Install WP PayPal and Stripe Online Payments By vCita =
 
-1.	Download “PayPal Button and Online Payment by vCita” and activate it.
+1.	Download “WP PayPal and Stripe Online Payments By vCita” and activate it.
 2.	Connect your WordPress site With you vCita account. You may connect an existing account or create an account via the plugin by simply providing your Email address. This Email will be used for notifications from vCita, and will never be available to your clients and website visitors. 
 3.	Connect your PayPal account to set where payments should be transferred to. Select payments currency.
 4.	Customize your PayPal payment button and LiveSite widget and add it to any page or post using the shortcode
@@ -90,7 +92,7 @@ Step by step instructions for implementing vCita widgets into your wordpress sit
 
 == Frequently Asked Questions ==
 
-= How to custmize my PayPal Payment Button = 
+= How to custmize my PayPal or Stripe Payment Button = 
 The button is automatically inherits your theme design, and you can easily customize using inline CSS.
 
 = How to link my PayPal account with the plugin = 
@@ -159,28 +161,31 @@ Please visit <a href="http://www.vcita.com/about/privacy_policy?invite=WP">Priva
 
 
 == Changelog ==
- = Online Payments with PayPal and Stripe - By vCita Version 2.0.0 =
+ = WP PayPal and Stripe Online Payments By vCita Version 2.1.0 =
+ * Fixed some bugs
+
+ = WP PayPal and Stripe Online Payments By vCita Version 2.0.0 =
  * Completely New Button design!
  * Integration with Stripe - Now you can collect payments using Stripe and get payments deposited directly into your bank account!
  * Payment icons can now be added to the button for a more professional look
  * Enhancements to the settings page
  * More FAQ's were added
 
- = Online Payments with PayPal and Stripe - By vCita Version 1.2.0 =
+ = WP PayPal and Stripe Online Payments By vCita Version 1.2.0 =
  * New design for email notifications sent from vCita to you & your clients
  * More customization for the emails including branding colors and logo
  * New! Email signature option was added
- * Enhencements with scheduling settings to prevent appointments from being scheduled to far in advance
+ * Enhancements with scheduling settings to prevent appointments from being scheduled to far in advance
  
- = Online Payments with PayPal and Stripe - By vCita Version 1.1.0 =
+ = WP PayPal and Stripe Online Payments By vCita Version 1.1.0 =
  * Compatibility with WordPress 4.1
  * Added translations to: Spanish, Polish, French and Hebrew.
  
- = Online Payments with PayPal and Stripe - By vCita Version 1.0.0 =
+ = WP PayPal and Stripe Online Payments By vCita Version 1.0.0 =
  * First release
 
 == Upgrade Notice ==
 
  = Online Payments with PayPal and Stripe - By vCita Version 2.0.0 =
-Introducing a new design for the payment buttoon, as well as a new integration with Stripe - to help you to get paid even faster!
+Introducing a new design for the payment button, as well as a new integration with Stripe - to help you to get paid even faster!
 

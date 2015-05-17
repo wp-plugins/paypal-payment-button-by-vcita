@@ -37,6 +37,7 @@ function vcita_admin_actions() {
     add_submenu_page(__FILE__, __('Settings', VCITA_WIDGET_MENU_NAME), __('Settings', VCITA_WIDGET_MENU_NAME), 'edit_posts',  __FILE__, 'vcita_settings_menu');
 
     add_submenu_page(__FILE__, __('LiveSite Widget', VCITA_WIDGET_MENU_NAME), __('LiveSite Widget', VCITA_WIDGET_MENU_NAME), 'edit_posts', VCITA_WIDGET_UNIQUE_ID.'/vcita-livesite-widget-edit.php');
+    add_submenu_page(__FILE__, __('Payment Settings', VCITA_WIDGET_MENU_NAME), __('Payment Settings', VCITA_WIDGET_MENU_NAME), 'edit_posts', VCITA_WIDGET_UNIQUE_ID.'/vcita-payment-settings.php');
     add_submenu_page(__FILE__, __('Manage Payments &amp; Invoices', VCITA_WIDGET_MENU_NAME), __('Manage Payments &amp; Invoices', VCITA_WIDGET_MENU_NAME), 'edit_posts', VCITA_WIDGET_UNIQUE_ID.'/vcita-manage-payments.php');
   }
   
@@ -45,12 +46,36 @@ function vcita_admin_actions() {
 }
 
 function vcita_get_add_options_defaults() {
+  $button_style =
+      "text-decoration: none;\n".
+      "display: block;\n".
+      "background: linear-gradient(to bottom, #fedc83 0%, #f0c85f 100%);\n".
+      "color: #46360c !important;\n".
+      "border: 1px solid #dbb44f;\n".
+      "border-radius: 3px;\n".
+      "padding: 2px 6px;\n".
+      "line-height: 29px;\n".
+      "font-size: 14px;\n".
+      "font-weight: bold;\n".
+      "text-align: center;\n".
+      "text-shadow: 0 1px 2px #fae9bc;\n".
+      "min-width: 158px;\n".
+      "cursor: pointer;";
   return array(
-    'button_label' => 'Pay Now',
-    'button_style' => "text-decoration: none;\ndisplay: block;\ntext-align: center;\nbackground: linear-gradient(to bottom, #ed6a31 0%, #e55627 100%);\ncolor: #fff !important;\npadding: 8px;",
+    'button_label' => 'PAY NOW',
+    'button_style' => $button_style,
+    'add_icons' => '1',
     'predefine_info' => '',
-    'payment_amount' => '',
-    'payment_title' => '',
+    'payment_amount' => '100',
+    'payment_title' => 'Hello',
+  );
+}
+
+# Should return array of strings - option names that
+# represent checkboxes that have default value of true (checked).
+function vcita_get_default_true_checkboxes() {
+  return array(
+    'add_icons',
   );
 }
 
@@ -59,10 +84,15 @@ add_action('init', 'vcita_save_add_options');
 function vcita_save_add_options() {
   if (!isset($_POST['vcita_save_settings'])) return;
   $keys = array_keys(vcita_get_add_options_defaults());
+  $checkboxes = vcita_get_default_true_checkboxes();
   $opt = array();
   foreach ($keys as $key) {
     if (isset($_POST[$key])) {
       $opt[$key] = stripslashes($_POST[$key]);
+    } else if (in_array($key, $checkboxes)) {
+      $opt[$key] = 'false';
+      #echo '<pre>';var_dump($opt);
+      #die('</pre>GOT['.$key.']<br>');
     }
   }
   update_option(VCITA_ADD_OPTIONS, $opt);
@@ -75,7 +105,9 @@ function vcita_get_add_options() {
   $loaded = get_option(VCITA_ADD_OPTIONS);
   $opt = array();
   foreach ($defaults as $key => $def) {
-    $opt[$key] = @$loaded[$key] ? $loaded[$key] : $def;
+    $val = @$loaded[$key] ? $loaded[$key] : $def;
+    if ($val == 'false') $val = false;
+    $opt[$key] = $val;
   }
   return $opt;
 }
@@ -286,13 +318,17 @@ function vcita_get_add_options() {
             return false;
           <?php endif; ?>
         };
-          
+
         $('#predefine_info').change(function(){
           $('.show-if-predefine').toggle($(this).prop('checked'));
         }).change();
         if (vcita_prevent(true)) {
           $('form[name=paynowbuttonform]').find('input[type=text], textarea').prop('readonly', true);
         }
+
+        $('#add_icons').change(function(){
+          $('.btn-preview .vcita-payment-icons').toggle($(this).prop('checked'));
+        }).change();
 
         $('textarea[name=button_style]').change(function(){
           var css = $.trim($(this).val().replace('\n', ' ').replace('\r', ' '));
@@ -354,12 +390,15 @@ function vcita_get_add_options() {
         </div>
         <div class="vcita-box-content">
           <p>Create a vCita account or connect your existing account</p>
-          <?php if ($first_time): ?>
-            <input id="vcita-email" type="text" value="" class="watermark" data-watermark="Enter Your Email"/>
+          <?php if ($first_time):
+            $user = wp_get_current_user();
+            $prepop_email = $user->data->user_email;
+            ?>
+            <input id="vcita-email" type="text" value="<?php echo esc_attr($prepop_email); ?>" class="watermark" data-watermark="Enter Your Email"/>
             <a href="javascript:void(0)" class="button button-primary" id="start-login">Connect</a>
           <?php else: # not first time ?>
             <label class="checked" for="user-email"></label>
-            <input id="vcita-email" type="text" disabled="disabled" value="<?php echo($vcita_widget["email"]) ?>"/>
+            <input id="vcita-email" type="text" disabled="disabled" value="<?php echo($vcita_widget['email']) ?>"/>
             <a class="vcita-switch-account" id="switch-account" href="#">switch account</a>
           <?php endif; ?>
           <div class="clear"></div>
@@ -372,7 +411,7 @@ function vcita_get_add_options() {
         </div>
         <div class="vcita-box-content">
           <div class="vcita-access-client-records">
-            <a href="https://www.vcita.com/settings/payments" target="_blank" class="button button-primary prevent-link" style="font-weight:bold;">Connect to PayPal &amp Set Currency</a>
+            <a href="admin.php?page=<?php echo VCITA_WIDGET_UNIQUE_ID; ?>/vcita-payment-settings.php" class="button button-primary prevent-link" style="font-weight:bold;">Connect to PayPal or Stripe &amp Set Currency</a>
           </div>
         </div>
       </div>
@@ -382,40 +421,16 @@ function vcita_get_add_options() {
           <p>3. Add Online Payment On Your Site</p>
         </div>
         <div class="vcita-box-content">
-          <table class="switch-row" style="width:100%">
-            <tr>
-              <td class="switch-label" valign="top" style="padding-top: 0.7em;">
-                <h3 style="display:inline;">LiveSite Widget &ndash;</h3>
-                <p style="display:inline;">
-                  A list of call to actions including contact, pay, schedule and more.<br />
-                  LiveSite can double the number of business opportunities you get from your website.
-                </p>
-              </td>
-              <td class="switch-wrap" style="width:140px;padding:1em 0 0;" valign="top">
-                <div class="onoffswitch">
-                  <input type="checkbox" id="livesite_active" name="livesite_active" class="onoffswitch-checkbox"
-                    value="1"<?php echo (@$vcita_widget['engage_active'] == 'true') ? ' checked' : ''; ?> />
-                  <label class="onoffswitch-label" for="livesite_active">
-                    <div class="onoffswitch-inner"></div>
-                    <div class="onoffswitch-switch"></div>
-                  </label>
-								</div>
-                <span class="vcita-preview" style="display: block; padding-top: 10px;">
-                  <?php if ($first_time): ?>
-                    <a class="preview" href="http://www.vcita.com/integrations/wordpress/active_engage_preview?uid=252a0a71f9a46f20&ver=2">Preview &amp; Edit</a>
-                  <?php else: ?>
-                    <a href="admin.php?page=<?php echo VCITA_WIDGET_UNIQUE_ID; ?>/vcita-livesite-widget-edit.php">Preview &amp; Edit</a>
-                  <?php endif; ?>
-                </span>
-              </td>
-            </tr>
-          </table>
-
-          <h3>Pay Now Button</h3>
+          <h3>Add a Payment Button</h3>
+          <div class="shortcode-wrap">
+            <div class="shortcode">
+              Shortcode: <input type="text" onclick="this.select();" value="[<?php echo VCITA_PAY_NOW_SHORTCODE; ?>]" readonly />
+            </div>
+          </div>
           <form name="paynowbuttonform" action="<?php echo admin_url('admin.php?page='.VCITA_WIDGET_UNIQUE_ID.'/vcita-settings-functions.php'); ?>" method="POST">
             <input type="hidden" name="vcita_save_settings" value="1" />
             <div class="btn-preview-wrap">
-              <span class="preview-title">Preview</span>
+              <span class="preview-title">Preview <img src="<?php echo plugins_url('images/arrow.png', __FILE__); ?>" width="27" height="20" class="preview-arrow" /></span>
               <div class="btn-preview">
                 <?php echo do_shortcode('['.VCITA_PAY_NOW_SHORTCODE.' preview=1]'); ?>
               </div>
@@ -423,16 +438,23 @@ function vcita_get_add_options() {
             <div class="row left-row">
               <div class="row-label">Button Label:</div>
               <div class="row-field full">
-                <input type="text" name="button_label" value="<?php echo esc_attr($button_label); ?>" />
+                <input type="text" name="button_label" value="<?php echo esc_attr($button_label); ?>" class="form-input" />
               </div>
               <div style="clear:left"></div>
             </div>
             <div class="row left-row">
               <div class="row-label">Button Style <small>(use inline CSS):</small></div>
               <div class="row-field full">
-                <textarea name="button_style"><?php echo esc_html($button_style); ?></textarea>
+                <textarea name="button_style" style="font-family:'Courier New', mono;" class="form-input"><?php echo esc_html($button_style); ?></textarea>
               </div>
               <div style="clear:left"></div>
+            </div>
+
+            <div class="row payment-amount-row">
+              <label for="add_icons">
+                <input type="checkbox" id="add_icons" name="add_icons" value="1" <?php echo $add_icons ? 'checked' : ''; ?> class="prevent-link" />
+                Show payment icons
+              </label>
             </div>
 
             <div class="row payment-amount-row">
@@ -456,14 +478,44 @@ function vcita_get_add_options() {
               </div>
               <div style="clear:both"></div>
             </div>
-            <br />
-            <input type="submit" class="button button-primary prevent-link" value="Save Changes" style="font-weight:bold;" />
-            <div class="shortcode-wrap">
-              <div class="shortcode">
-                Shortcode: <input type="text" onclick="this.select();" value="[<?php echo VCITA_PAY_NOW_SHORTCODE; ?>]" readonly />
-              </div>
-            </div>
           </form>
+          <hr class="vcita-separation" />
+          <table class="switch-row" style="width:100%">
+            <tr>
+              <td class="switch-wrap" style="width:110px;padding:1.4em 0 0;text-align:center" valign="top">
+                <div class="onoffswitch" style="text-align:left;">
+                  <input type="checkbox" id="livesite_active" name="livesite_active" class="onoffswitch-checkbox"
+                    value="1"<?php echo (@$vcita_widget['engage_active'] == 'true') ? ' checked' : ''; ?> />
+                  <label class="onoffswitch-label" for="livesite_active">
+                    <div class="onoffswitch-inner"></div>
+                    <div class="onoffswitch-switch"></div>
+                  </label>
+								</div>
+                <span class="vcita-preview" style="display: block; padding-top: 10px;">
+                  <?php if ($first_time): ?>
+                    <a class="preview" href="http://www.vcita.com/integrations/wordpress/active_engage_preview?uid=252a0a71f9a46f20&ver=2">Preview &amp; Edit</a>
+                  <?php else: ?>
+                    <a href="admin.php?page=<?php echo VCITA_WIDGET_UNIQUE_ID; ?>/vcita-livesite-widget-edit.php">Preview &amp; Edit</a>
+                  <?php endif; ?>
+                </span>
+              </td>
+              <td class="switch-label" valign="top" style="padding: 0 100px 0 20px;">
+                <h3>Use Our Call to Action Widget</h3>
+                <p>
+                  Including contact, pay, schedule and more.
+                  LiveSite can double the number of business
+                  opportunities you get from your website.
+                </p>
+              </td>
+              <td class="livesite-preview-wrap" style="width:202px;padding:5px 10px 0 0;" valign="top">
+                <div class="livesite-preview">
+                  <img src="<?php echo plugins_url('images/livesite-preview.png', __FILE__); ?>" width="202" height="140" />
+                </div>
+              </td>
+            </tr>
+          </table>
+          <br />
+          <button type="buttom" class="button button-primary prevent-link" style="font-weight:bold;" onclick="document.forms.paynowbuttonform.submit();">Save Changes</button>
         </div>
       </div>
 

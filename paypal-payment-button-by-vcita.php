@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: PayPal Payment Button by vCita
+Plugin Name: Online Payments with PayPal and Stripe - By vCita
 Plugin URI: http://www.vcita.com
 Description: vCita PayPal Payments plugin for WordPress helps you accelerate the billing cycle! In just a few clicks, you can add a PayPal "Pay Now" payment button to any page or post on your WordPress site, and start accepting payments online!
 Version: 2.1.0

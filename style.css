@@ -50,6 +50,8 @@ h2.vcita-admin-title .vcita-logo {
 
 .vcita-box-title p {
   margin: 3px 5px 3px 15px;
+  font-size: 16px;
+  line-height: 30px;
 }
 
 .vcita-box-content {
@@ -852,7 +854,7 @@ input.vcita-watermark {
 
 .row-label {
   float: left;
-  width: 150px;
+  width: 90px;
 }
 
 .row-label small {
@@ -860,7 +862,7 @@ input.vcita-watermark {
 }
 
 .row-field {
-  margin-left: 160px;
+  margin-left: 100px;
 }
 
 .row-field input,
@@ -868,26 +870,25 @@ input.vcita-watermark {
   width: 24em;
 }
 
-.row-field.full input,
-.row-field.full textarea {
-  width: 100%;
-  margin: 0;
-}
-
 .row-field textarea {
   height: 7em;
 }
 
 .btn-preview-wrap {
-  width: 240px;
+  width: 280px;
   float: right;
   text-align: center;
   padding: 20px 0 0;
 }
 
+.preview-arrow {
+  position: relative;
+  top: 10px;
+  left: 4px;
+}
+
 .shortcode-wrap {
-  display: inline-block;
-  margin: 0 0 0 40px;
+  margin: 0 0 10px;
 }
 
 .shortcode input {
@@ -903,6 +904,25 @@ input.vcita-watermark {
   display: block;
   font-size: 14px;
   font-weight: bold;
-  padding-bottom: 0.7em;
+  padding-bottom: 1em;
+}
+
+.livesite-preview {
+  float: right;
+}
+
+hr.vcita-separation {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #888;
+  margin: 1.4em 2px 0.7em;
+  padding: 0;
+}
+
+input.form-input,
+textarea.form-input {
+  width: 87%;
+  margin: 0;
 }
 

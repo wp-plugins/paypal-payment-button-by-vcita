@@ -210,7 +210,6 @@ function save_user_params() {
 
 	if (@$_POST['form_type'] == 'engage_enable_control') {
 		$vcita_widget['engage_active'] = ($_POST['Submit'] == 'Activate') ? 'true' : 'false';
-	
 	} else {
 		$previous_email = vcita_default_if_non($vcita_widget, 'email');
 		$vcita_widget['created'] = 1;
@@ -253,7 +252,7 @@ function vcita_parse_expert_data($raw_data) {
 						   'version' => VCITA_WIDGET_VERSION,
 						   'contact_page_active' => VCITA_WIDGET_CONTACT_FORM_WIDGET,
                'calendar_page_active' => VCITA_WIDGET_CALENDAR_WIDGET,
-						   'engage_active' => 'true',
+						   'engage_active' => 'false',
 						   'confirmation_token' => $raw_data['confirmation_token'],
 						   'implementation_key' => $raw_data['implementation_key'],
 						   'confirmed' => $raw_data['confirmed']);
@@ -274,38 +273,38 @@ function vcita_parse_expert_data($raw_data) {
  */
 function vcita_parse_expert_data_from_api($success, $widget_params, $raw_data) {
 
-    $previous_id = $widget_params['uid'];
-	$widget_params['uid'] = '';
-	
-    if (!$success) {
-        $widget_params['last_error'] = "Temporary problems, please try again";
+  $previous_id = $widget_params['uid'];
+  $widget_params['uid'] = '';
 
+  if (!$success) {
+    $widget_params['last_error'] = "Temporary problems, please try again";
+
+  } else {
+    $data = json_decode($raw_data);
+
+    if ($data->{'success'} == 1) {
+      $widget_params['first_name'] = $data->{'first_name'};
+      $widget_params['last_name'] = $data->{'last_name'};
+      $widget_params['engage_delay'] = $data->{'engage_delay'};
+      $widget_params['engage_text'] = $data->{'engage_text'};
+      $widget_params['confirmed'] = $data->{'confirmed'};
+      $widget_params['last_error'] = "";
+      $widget_params['uid'] = $data->{'id'};
+
+      if ($previous_id != $data->{'id'} || !empty($data->{'confirmation_token'})) {
+        $widget_params['confirmation_token'] = $data->{'confirmation_token'};
+        $widget_params['implementation_key'] = $data->{'implementation_key'};
+
+        // Active by Default if not previsouly disabled
+        $widget_params['engage_active'] = vcita_default_if_non($widget_params, 'engage_active', 'false');
+      }
     } else {
-        $data = json_decode($raw_data);
-
-        if ($data->{'success'} == 1) {
-			$widget_params['first_name'] = $data->{'first_name'};
-            $widget_params['last_name'] = $data->{'last_name'};
-			$widget_params['engage_delay'] = $data->{'engage_delay'};
-			$widget_params['engage_text'] = $data->{'engage_text'};
-            $widget_params['confirmed'] = $data->{'confirmed'};
-	        $widget_params['last_error'] = "";
-			$widget_params['uid'] = $data->{'id'};
-
-			if ($previous_id != $data->{'id'} || !empty($data->{'confirmation_token'})) {
-				$widget_params['confirmation_token'] = $data->{'confirmation_token'};
-				$widget_params['implementation_key'] = $data->{'implementation_key'};
-				
-				// Active by Default if not previsouly disabled
-				$widget_params['engage_active'] = vcita_default_if_non($widget_params, 'engage_active', 'true');
-			}
-
-        } else {
-            $widget_params['last_error'] = $data-> {'error'};
-        }
+      $widget_params['last_error'] = $data-> {'error'};
     }
 
-    return $widget_params;
+  }
+
+  return $widget_params;
 }
 
 /**
@@ -376,7 +375,7 @@ function create_initial_parameters() {
 						   'new_install' => isset($old_params['new_install']) ? $old_params['new_install'] : 'false',
 						   'version' => VCITA_WIDGET_VERSION,
 						   'contact_page_active' => VCITA_WIDGET_CONTACT_FORM_WIDGET,
-               'engage_active' => 'true', //isset($old_params['new_install']) ? $old_params['new_install'] : 'false',
+               'engage_active' => 'false',
 						   'confirmation_token' => '',
 						   'implementation_key' => '',
 						   'dismiss' => vcita_default_if_non($old_params, 'dismiss'),

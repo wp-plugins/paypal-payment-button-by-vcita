@@ -1,10 +1,10 @@
 ﻿=== WP PayPal and Stripe Online Payments By vCita ===
 Contributors: vCita
 Donate link: http://www.vcita.com?invite=WP-V-PNT&o=WP-V-PNT
-Tags: PayPal payment, PayPal, button, payment, online payments, Stripe, Super Stripe, Stripe checkout, pay now, paypal payment form, Stripe  payment form, paypal plugin for wordpress, payment accept, button, paypal button, payment form, pay online, paypal buy now, ecommerce, paypal plugin, shortcode, online, payments, payments for wordpress, paypal for wordpress, paypal donation, paypal transfer, payment processing, paypal widget, wp paypal, purchase button, money, invoice, invoicing, payment collect, secure, process credit cards, paypal integration, gateway, stripe, authorize
+Tags: PayPal payment, PayPal, button, payment, online payments, Stripe, Super Stripe, Stripe checkout, pay now, paypal payment form, Stripe  payment form, paypal plugin for wordpress, payment accept, button, paypal button, payment form, pay online, paypal buy now, ecommerce, paypal plugin, shortcode, online, payments, payments for wordpress, paypal for wordpress, paypal donation, paypal transfer, payment processing, paypal widget, wp paypal, purchase button, money, invoice, invoicing, payment collect, secure, process credit cards, paypal integration, gateway, stripe, multilingual, authorize
 Requires at least: 2.8
-Tested up to: 4.1
-Stable tag: 2.0.0
+Tested up to: 4.2.2
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -62,9 +62,10 @@ WP PayPal and Stripe Online Payments By vCita is currently available in:
 
 * English
 * Spanish
+* Portuguese
+* French
 * Hebrew
 * Polish
-* French
 
 Find out more about vCita <a href ="https://www.vcita.com/software/invoicing?o=wp-v-pnt">online payments</a> and <a href ="https://www.vcita.com/software/invoicing?o=wp-v-pnt">invoicing templates</a>
 
@@ -162,6 +163,7 @@ Please visit <a href="http://www.vcita.com/about/privacy_policy?invite=WP">Priva
 
 == Changelog ==
  = WP PayPal and Stripe Online Payments By vCita Version 2.1.0 =
+ * Compatibility with WordPress 4.2
  * Fixed some bugs
 
  = WP PayPal and Stripe Online Payments By vCita Version 2.0.0 =
@@ -186,6 +188,6 @@ Please visit <a href="http://www.vcita.com/about/privacy_policy?invite=WP">Priva
 
 == Upgrade Notice ==
 
- = Online Payments with PayPal and Stripe - By vCita Version 2.0.0 =
+ = Online Payments with PayPal and Stripe - By vCita Version 2.1.0 =
 Introducing a new design for the payment button, as well as a new integration with Stripe - to help you to get paid even faster!
 

@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 /*
 *  livesite_parse_callback
 *
@@ -68,7 +72,7 @@ class livesite_parse_callback
 		ls_set_settings( array(
             'vcita_connected' => true,
             'vcita_params' => array(
-              'success'              => $success,
+                'success'              => $success,
             	'uid'                  => $uid,
             	'first_name'           => $first_name,
             	'last_name'            => $last_name,

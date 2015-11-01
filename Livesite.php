@@ -1,22 +1,22 @@
 <?php
 /*
-Plugin Name: Lead Capturing Call-To-Actions by vCita
+Plugin Name: Online Payments with PayPal and Stripe - By vCita
 Plugin URI: http://www.vcita.com
-Description: vCita Lead Capturing Call-To-Actions plugin for WordPress helps you capture twice as many leads!
-Version: 3.0.1
+Description: vCita PayPal Payments plugin for WordPress helps you accelerate the billing cycle! In just a few clicks, you can add a PayPal "Pay Now" payment button to any page or post on your WordPress site, and start accepting payments online!
+Version: 3.1.0
 Author: vCita.com
 Author URI: http://www.vcita.com
 */
 
 /*
-*  livesite_main_lw
+*  livesite_main_pm
 *
 *  @description: controller for main init of LiveSite Plugin
-*  @since: 3.0.1
+*  @since: 3.0.3
 *  @created: 01/10/15
 */
 
-class livesite_main_lw {
+class livesite_main_pm {
 
     /**
      * Defines the plugin settings for the init instance
@@ -35,7 +35,7 @@ class livesite_main_lw {
         if ( $this->old_plugin_settings ){
 
         	// Check if this plugin is not the active one
-        	if ( $this->old_plugin_settings['main_module'] != 'livesite_widget' ){
+        	if ( $this->old_plugin_settings['main_module'] != 'payments' ){
 
         		add_action('admin_notices', array($this,'other_plugin_installed'));
         		add_action('admin_init', array($this,'deactivate_plugin'));
@@ -47,11 +47,9 @@ class livesite_main_lw {
         }
 
         if ( $run_plugin ){
-          $path = plugin_dir_path( __FILE__ );
+            require_once( __DIR__ . '/plugin_init.php' );
 
-          require_once( $path . 'plugin_init.php' );
-
-          new ls_plugin_init();
+            new ls_plugin_init();
         }
 
 
@@ -77,5 +75,5 @@ class livesite_main_lw {
 
 }
 
-new livesite_main_lw();
+new livesite_main_pm();
 ?>

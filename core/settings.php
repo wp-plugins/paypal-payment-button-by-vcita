@@ -63,40 +63,35 @@ function ls_init_default_settings(){
 
         ls_set_settings(array(
             // Defines the initial module when plugin starts up
-            'main_module' => 'livesite_widget',
+            'main_module' => 'payments',
             // This is setup if the plugin has been upgraded
             // So we know not to auto install module pages
             'plugin_upgraded' => false,
             // Specifies the paths for each modules code and if it's active or not
             'modules' => array(
-                'form_builder' => array(
+                'payments' => array(
                     'active' => true,
-                    'path'   => 'modules'. LS_SLASH .'form_builder.php',
-                    'icon' => 'icon-File-Edit',
-            		'title' => 'Contact Form',
-                    'main_title' => 'Contact Form',
-            		'text' => 'Create beautiful forms using a simple Drag &amp; Drop editor.',
-                    'slug' => 'ls_cf',
+                    'path'   => 'modules'. LS_SLASH .'payments.php',
+                    'icon' => 'icon-Money',
+            		'title' => 'Payments Button',
+                    'main_title' => 'Online Payments',
+            		'text' => 'Offer your clients a simple way to pay for your services',
+                    'slug' => 'ls_pm',
                     'custom_page_id' => false,
-                    'custom_page_title' => 'Contact Us',
-                    'custom_page_content' => array(
-                      '<strong>Fill in the form below and we will get in touch as soon as we can.</strong> [livesite-contact title="Contact request"]',
-                      '<strong>We are always interested to hear from anyone who wishes to get in touch with us. Please fill up the contact form below and we\'ll get back to you soon. A confirmation email will be sent to you once the message was sent.</strong> [livesite-contact title="Contact request"]',
-                      '<strong>Feel free to contact our team with your inquiries, by using the contact management software form below:</strong> [livesite-contact title="Contact request"]',
-                      '<strong>Please complete the contact form below to schedule time with our team.</strong> [livesite-contact title="Contact request"]'
-                    ),
+                    'custom_page_title' => 'Pay Online',
+                    'custom_page_content' => '<strong>You are invited to securely pay online using any Credit Card or PayPal. Simply fill in the form below.</strong> [livesite-pay]',
                     'custom_page_previously_created' => false,
                     'module_tray_text' => array(
-                        'active' => 'Customize your contact form',
-                        'disabled' => 'Add a contact form to your site'
+                        'active' => 'Customize your payment form',
+                        'disabled' => 'Add online payment options to your site'
                     )
                 ),
                 'livesite_widget' => array(
                     'active' => true,
                     'path'   => 'modules'. LS_SLASH .'livesite_widget.php',
                     'icon' => 'icon-Livesite',
-            		'title' => 'Livesite Widget',
-                    'main_title' => 'Lead Capturing Contact Form',
+            		'title' => 'LiveSite Widget',
+                    'main_title' => 'Livesite Widget',
             		'text' => 'Encourage clients to take actions and capture twice as many leads',
                     'slug' => 'ls_lw',
                     'custom_page_id' => false,
@@ -106,26 +101,21 @@ function ls_init_default_settings(){
                         'disabled' => ''
                     )
                 ),
-                'payments' => array(
+                'form_builder' => array(
                     'active' => false,
-                    'path'   => 'modules'. LS_SLASH .'payments.php',
-                    'icon' => 'icon-Money',
-            		'title' => 'Payments Button',
-                    'main_title' => 'Online Payments',
-            		'text' => 'Offer your clients a simple way to pay for your services',
-                    'slug' => 'ls_pm',
+                    'path'   => 'modules'. LS_SLASH .'form_builder.php',
+                    'icon' => 'icon-File-Edit',
+            		'title' => 'Contact Form',
+                    'main_title' => 'Contact Form',
+            		'text' => 'Create beautiful forms using a simple Drag &amp; Drop editor.',
+                    'slug' => 'ls_cf',
                     'custom_page_id' => false,
-                    'custom_page_title' => 'Pay Online',
-                    'custom_page_content' => array(
-                        '<strong>You are invited to securely pay online using any Credit Card or PayPal. Simply fill in the form below.</strong> [livesite-pay]',
-                        '<p>We accept online payments!</p><p>You may pay securely using any Credit Card or PayPal account.<br>Please use the form below to complete your payment. A confirmation email will be sent to you once the charge has been made.</p> [livesite-pay]',
-                        '<strong>Make a payment using our secure and convenient online payment system.</strong> [livesite-pay]',
-                        '<strong>We invite you to make a secure online payment.<br>To get started, please fill up the form below:</strong> [livesite-pay]',
-                    ),
+                    'custom_page_title' => 'Contact Us',
+                    'custom_page_content' => '<strong>Fill in the form below and we will get in touch as soon as we can.</strong> [livesite-contact title="Contact request"]',
                     'custom_page_previously_created' => false,
                     'module_tray_text' => array(
-                        'active' => 'Customize your payment form',
-                        'disabled' => 'Add online payment options to your site'
+                        'active' => 'Customize your contact form',
+                        'disabled' => 'Add a contact form to your site'
                     )
                 ),
                 'scheduler' => array(
@@ -138,12 +128,7 @@ function ls_init_default_settings(){
                     'slug' => 'ls_sc',
                     'custom_page_id' => false,
                     'custom_page_title' => 'Book Appointment',
-                    'custom_page_content' => array(
-                      '<strong>We invite you to schedule an appointment online. See our available time below and pick a time that works best for you.</strong> [livesite-schedule title="Contact request"]',
-                      '<strong>Use this calendar to schedule an appointment with us.</strong> [livesite-schedule title="Contact request"]',
-                      '<strong>Please use the below CRM Software to reach out to us.</strong> [livesite-schedule title="Contact request"]',
-                      '<strong>Use our Online Scheduling system to book an appointment, request a service or schedule a meeting.</strong> [livesite-schedule title="Contact request"]',
-                    ),
+                    'custom_page_content' => '<strong>We invite you to schedule an appointment online. See our available time below and pick a time that works best for you.</strong> [livesite-schedule title="Contact request"]',
                     'custom_page_previously_created' => false,
                     'module_tray_text' => array(
                         'active' => 'Customize your scheduling options',

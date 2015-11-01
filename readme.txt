@@ -5,7 +5,7 @@ Tags: PayPal payment, PayPal, button, payment, online payments, Stripe, Super St
 crédito, pagamentos, pagar agora, pagar online, português, facturación, pagos en línea, forma de pago, botón de compra, aceptar pago, pagar ahora, pague en línea, español, faturamento, pagamentos online, formulário de pagamento, botão de compra, processar cartão de crédito, pagamentos, pagar agora, pagar online, português, secured
 Requires at least: 2.8
 Tested up to: 4.3.1
-Stable tag: 3.2.0
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -22,8 +22,6 @@ Both the button and the form provide a professional, mobile friendly **online pa
 You can **customize the form** and request additional information regarding the client or the payment.
 **Funds are directly deposited** in your PayPal or bank account and with no additional transaction fees.
 <BR>
-
-*New!* view and manage all payments and contact on-the-go with **the vCita Mobile App for <a href="https://itunes.apple.com/il/app/vcita-mobile-crm/id1025423769?mt=8">iPhone</a> or <a href="https://play.google.com/store/apps/details?id=com.vcita.mobileapp">Android</a>**
 
 = Online Payments Plugin Key Features: =
 
@@ -142,10 +140,6 @@ Please visit <a href="http://www.vcita.com/about/privacy_policy?invite=WP">Priva
 
 
 == Changelog ==
- = WP PayPal and Stripe Online Payments By vCita Version 3.2.0 =
- * New Mobile App
- * Some UI improvements
-
  = WP PayPal and Stripe Online Payments By vCita Version 3.1.0 =
  * Compatibility with WordPress 4.3.1
 
@@ -179,5 +173,5 @@ Please visit <a href="http://www.vcita.com/about/privacy_policy?invite=WP">Priva
 
 == Upgrade Notice ==
 
- = Online Payments with PayPal and Stripe - By vCita Version 3.2.0 =
-New mobile app, and some UI improvements
+ = Online Payments with PayPal and Stripe - By vCita Version 3.0.0 =
+Introducing completely new interface with more options and functionalities!

@@ -9,9 +9,9 @@ jQuery( function($) {
 			connect_email = $('#connect-email').val();
 
 		var new_location = [
-			"http://www.vcita.com/integrations/wordpress/new",
+			"//www.vcita.com/integrations/wordpress/new",
 			"?callback=" + encodeURIComponent(callbackURL),
-			"&invite=wp-v-pnt",
+			"&invite=WP-v-ae",
 			"&lang=" + ls_PHPVAR_livesite.ls_locale,
 			"&email=" + connect_email
 		].join('');
